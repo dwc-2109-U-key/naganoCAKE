@@ -3,7 +3,7 @@
 
 <div class='container'>
   <div class='row'>
-    <div class='col-3 hidari'>
+    <div class='col-2 hidari'>
       <div class = 'genre_search'>
         <div class = 'genre_search_title'>ジャンル検索</div>
         <% @genres.each do |genre| %>
@@ -11,15 +11,15 @@
         <% end %>
       </div>
     </div>
-    <div class='col-9 migi'>
-      <% @items.each do |item| %>
-        <!--<div class = 'item-box'>-->
-        <%= link_to(about_path, class: 'item-box') do %>
-          <%= image_tag(item.image_id, class: "item-img") %>
-          <p class = 'item-text'><%= item.name %></br>¥<%= item.total_payment.to_s(:delimited) %></p>
+    <div class='col-10 migi'>
+      <div class = 'item-container'>
+        <% @items.each do |item| %>
+          <%= link_to(about_path, class: 'item-box') do %>
+            <%= image_tag(item.image_id, class: "item-img") %>
+            <p class = 'item-text'><%= item.name %></br>¥<%= item.total_payment.to_s(:delimited) %></p>
+          <% end %>
         <% end %>
-        <!--</div>-->
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

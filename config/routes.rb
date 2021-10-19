@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'items/show'
+
   root to: 'homes#home'
   get 'homes/about', to: 'homes#about', as: 'about'
   get 'homes/login', to: 'homes#login', as: 'login'

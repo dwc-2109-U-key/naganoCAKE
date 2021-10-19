@@ -12,19 +12,23 @@
       </div>
     </div>
     <div class='col-9 migi'>
-      <%= image_tag("img/top.jpeg", class: "top-img") %>
+      <%= render 'slider' %>
+      <div class = "welcome-text">
+        <p >ようこそ、ながのCAKEへ！</br>
+          このサイトは、ケーキ販売のECサイトになります。</br>
+          会員でない方も商品の閲覧はできますが、</br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
       <h1>新着商品</h1>
-      <% @items4.each do |item| %>
-        <div class = 'item-box'>
-          <%= image_tag(item.image_id, class: "item-img") %>
-          <p class = 'item-text'><%= item.name %></p>
-          <% if item.total_payment >= 1000 %>
-            <p class = 'item-text'>¥<%= item.total_payment/1000.to_s %>,<%= item.total_payment%1000.to_s %></p>
-          <% else %>
-            <p class = 'item-text'>¥<%= item.total_payment.to_s %></p>
+      <div class = 'item-container'>
+        <% @items4.each do |item| %>
+          <%= link_to(about_path, class: 'item-box') do %>
+            <%= image_tag(item.image_id, class: "item-img") %>
+            <p class = 'item-text'><%= item.name %></br>¥<%= item.total_payment.to_s(:delimited) %></p>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
