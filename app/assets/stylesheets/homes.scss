@@ -52,6 +52,11 @@ img.item-img {
 }
 
 .item-text {
+  color: black;
   margin-top: 4px;
   margin-bottom: 2px;
+}
+
+.item-text:hover {
+  color: peru;
 }
