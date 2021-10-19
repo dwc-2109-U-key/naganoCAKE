@@ -1,2 +1,18 @@
 <h1>Items#show</h1>
 <p>Find me in app/views/items/show.html.erb</p>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-2 hidari'>
+      <%= render 'homes/genre-search', genres: @genres %>
+    </div>
+    <div class='col-4 naka'>
+      <%= image_tag(@item.image_id, class: "show-img") %>
+    </div>
+    <div class='col-6 migi'>
+      <h1><%= @item.name %></h1>
+      <p><%= @item.introduction %></p></br>
+      <h3>¥ <%= @item.total_payment %><span>(税込)</span></h3>
+    </div>
+  </div>
+</div>

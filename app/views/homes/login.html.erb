@@ -4,12 +4,7 @@
 <div class='container'>
   <div class='row'>
     <div class='col-2 hidari'>
-      <div class = 'genre_search'>
-        <div class = 'genre_search_title'>ジャンル検索</div>
-        <% @genres.each do |genre| %>
-          <div class = 'genre_search_record'><%= genre.name %></div>
-        <% end %>
-      </div>
+      <%= render 'genre-search', genres: @genres %>
     </div>
     <div class='col-10 migi'>
       <%= render 'item-list', items: @items %>

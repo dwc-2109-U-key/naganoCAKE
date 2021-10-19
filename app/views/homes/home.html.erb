@@ -3,13 +3,8 @@
 
 <div class='container'>
   <div class='row'>
-    <div class='col-3 hidari'>
-      <div class = 'genre_search'>
-        <div class = 'genre_search_title'>ジャンル検索</div>
-        <% @genres.each do |genre| %>
-          <div class = 'genre_search_record'><%= genre.name %></div>
-        <% end %>
-      </div>
+    <div class = 'col-3 hidari'>
+      <%= render 'genre-search', genres: @genres %>
     </div>
     <div class='col-9 migi'>
       <%= render 'slider' %>
