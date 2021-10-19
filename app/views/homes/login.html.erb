@@ -1,0 +1,28 @@
+<h1>Homes#login</h1>
+<p>Find me in app/views/homes/login.html.erb</p>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-3 hidari'>
+      <div class = 'genre_search'>
+        <div class = 'genre_search_title'>ジャンル検索</div>
+        <% @genres.each do |genre| %>
+          <div class = 'genre_search_record'><%= genre.name %></div>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-9 migi'>
+      <% @items.each do |item| %>
+        <div class = 'item-box'>
+          <%= image_tag(item.image_id, class: "item-img") %>
+          <p class = 'item-text'><%= item.name %></p>
+          <% if item.total_payment >= 1000 %>
+            <p class = 'item-text'>¥<%= (item.total_payment/1000).to_s %>,<%= (item.total_payment%1000).to_s %></p>
+          <% else %>
+            <p class = 'item-text'>¥<%= item.total_payment.to_s %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

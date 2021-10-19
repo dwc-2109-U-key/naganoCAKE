@@ -1,0 +1,57 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+header {
+  background-color: gold;
+  color: darkblue;
+  text-align: center;
+}
+
+.hidari {
+  background-color: coral;
+}
+
+.migi {
+  background-color: royalblue;
+}
+
+.genre_search {
+  background-color: pink;
+  border: solid 2px;
+  border-color: black;
+}
+
+.genre_search_title {
+  text-align: center;
+  background-color: hotpink;
+  border-bottom: solid 2px;
+  border-color: black;
+}
+
+.genre_search_record {
+  background-color: lightpink;
+  margin: 16px 6px;
+}
+
+.top-img {
+  width: 100%;
+}
+
+.item-box {
+  width: 24%;
+  float: left;
+  margin: 2px;
+}
+
+img.item-img {
+  width: 100%;
+  height: 120px;
+  background-color: gray;
+  object-fit: cover;
+}
+
+.item-text {
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
