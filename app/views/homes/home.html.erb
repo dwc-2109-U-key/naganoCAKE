@@ -21,14 +21,7 @@
         </p>
       </div>
       <h1>新着商品</h1>
-      <div class = 'item-container'>
-        <% @items4.each do |item| %>
-          <%= link_to(about_path, class: 'item-box') do %>
-            <%= image_tag(item.image_id, class: "item-img") %>
-            <p class = 'item-text'><%= item.name %></br>¥<%= item.total_payment.to_s(:delimited) %></p>
-          <% end %>
-        <% end %>
-      </div>
+      <%= render 'item-list', items: @items4 %>
     </div>
   </div>
 </div>
