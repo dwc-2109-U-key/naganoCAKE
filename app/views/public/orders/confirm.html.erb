@@ -1,0 +1,83 @@
+<h1>Public::Orders#confirm</h1>
+<p>Find me in app/views/public/orders/confirm.html.erb</p>
+
+<div class = "row h5">
+  <div class = "col-1"></div>
+  <div class = "col-3"><span class = "bg-secondary p-1">　注文情報確認　</span></div>
+</div>
+<div class = "row">
+  <div class = "col-9">
+     <table class="mx-auto w-auto table-hover">
+      <thead class = "table-secondary table-bordered">
+        <tr>
+          <th colspan = "2">商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |ci| %>
+          <tr class = "table-bordered">
+            <th class = "p-2", colspan = "2">
+              <%= image_tag(ci.item.image_id, class: "show-img", style: "width: 2.0rem; height: 2.0rem;") %>
+              <%= ci.item.name %>
+            </th>
+            <th class = "p-2">¥<%= ci.item.total_payment.to_s(:delimited) %></th>
+            <th class = "p-2"><%= ci.quantity %></th>
+            <th class = "p-2">¥<%= (ci.item.total_payment*ci.quantity).to_s(:delimited) %></th>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan = "5">　</td>
+        </tr>
+        <tr>
+          <td class = "px-3 h4">支払方法
+          </td>
+          <td colspan = "4">
+            <% if @confirm.payment_method == 1 %>
+              <%= "クレジットカード" %>
+            <% elsif @confirm.payment_method == 2 %>
+              <%= "銀行振込" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class = "px-3 h4">お届け先</td>
+          <td colspan = "4"><%= @confirm.postal_code %> <%= @confirm.address %></br><%= @confirm.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class = "col-1"></div>
+  <div class = "col-2">
+    <table class = "mx-auto w-auto table table-bordered border-dark">
+      <tbody>
+        <tr>
+          <td class = "table-secondary">送料</td>
+          <td><%= @confirm.postage %></td>
+        </tr>
+        <tr>
+          <td class = "table-secondary">商品合計</td>
+          <td><%= @price_without_postage %></td>
+        </tr>
+        <tr>
+          <td class = "table-secondary">請求金額</td>
+          <td><%= @confirm.price.to_s(:delimited) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</br>
+<%= form_with model: @confirm, url: orders_path, local: true do |o| %>
+  <%= o.hidden_field :customer_id, value: @confirm.customer_id %>
+  <%= o.hidden_field :status, value: 0 %>
+  <%= o.hidden_field :postal_code, value: @confirm.postal_code %>
+  <%= o.hidden_field :address, value: @confirm.address %>
+  <%= o.hidden_field :name, value: @confirm.name %>
+  <%= o.hidden_field :postage, value: @confirm.postage %>
+  <%= o.hidden_field :price, value: @confirm.price %>
+  <%= o.hidden_field :payment_method, value: @confirmpayment_method %>
+  <div class = "w-100"><%= o.submit "注文を確定する", class: "btn btn-success p-3 mx-auto w-auto d-block" %></div>
+<% end %>
