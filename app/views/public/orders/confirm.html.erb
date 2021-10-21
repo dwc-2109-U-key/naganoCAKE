@@ -71,5 +71,13 @@
 </div>
 </br>
 <%= form_with model: @confirm, url: orders_path, local: true do |o| %>
+  <%= o.hidden_field :customer_id, value: @confirm.customer_id %>
+  <%= o.hidden_field :status, value: 0 %>
+  <%= o.hidden_field :postal_code, value: @confirm.postal_code %>
+  <%= o.hidden_field :address, value: @confirm.address %>
+  <%= o.hidden_field :name, value: @confirm.name %>
+  <%= o.hidden_field :postage, value: @confirm.postage %>
+  <%= o.hidden_field :price, value: @confirm.price %>
+  <%= o.hidden_field :payment_method, value: @confirmpayment_method %>
   <div class = "w-100"><%= o.submit "注文を確定する", class: "btn btn-success p-3 mx-auto w-auto d-block" %></div>
 <% end %>

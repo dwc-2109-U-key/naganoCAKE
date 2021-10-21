@@ -23,9 +23,9 @@ class Public::OrdersController < ApplicationController
       @order_detail.order_id = @order.id
       @order_detail.quantity = ca.quantity
       @order_detail.production_status = 0
-      @order_detail.price = ca.item_id.total_payment*ca.quantity
+      @order_detail.price = ca.item.total_payment*ca.quantity
       @order_detail.save
-      ca.destory
+      ca.destroy
     }
     @order.save
     redirect_to thanks_orders_path
