@@ -1,8 +1,7 @@
-ebisui.kenta
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WorkGithub</title>
+    <title>naganoCAKE</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,7 +9,30 @@ ebisui.kenta
   </head>
 
   <body>
+    <header>
+      
+      <% #顧客でサインインしている場合 %>
+      <% if user_signed_in? then %>
+        <%= render "header_public" %>
+        
+      <% #管理者でサインインしている場合 %>
+      <% elsif admin_signed_in? then %> 
+        <%= render "header_admin" %>
+        
+      <% #どちらにも当てはまらない場合(ログインしていない状態) %>
+      <% else %>
+        <%= render "header" %>
+      
+      <% end %>
+      
+      
+    </header>
+    
     <%= yield %>
+    
+    <footer>
+      
+      
+    </footer>
   </body>
 </html>
-ebisui.kenta
