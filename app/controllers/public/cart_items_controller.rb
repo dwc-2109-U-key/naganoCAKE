@@ -1,8 +1,8 @@
 class Public::CartItemsController < ApplicationController
   def index
-    # @cart_items = CartItem.all
     @cart_items = CartItem.where(customer_id: 1)
-    @price = @cart_items.sum { |hash| Item.find(hash[:item_id]).total_payment*hash[:quantity] }
+    # @price = @cart_items.sum { |hash| Item.find(hash[:item_id]).total_payment*hash[:quantity] }
+    @price = @cart_items.sum { |ci| ci.item.total_payment*ci[:quantity] }
   end
 
   def create

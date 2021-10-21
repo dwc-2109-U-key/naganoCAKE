@@ -23,10 +23,10 @@
             <tr class = "table-bordered">
               <th class = "p-2"><%= ci.customer_id %></th>
               <th class = "p-2">
-                <%= image_tag(Item.find(ci.item_id).image_id, class: "show-img", style: "width: 2.0rem; height: 2.0rem;") %>
-                <%= Item.find(ci.item_id).name %>
+                <%= image_tag(ci.item.image_id, class: "show-img", style: "width: 2.0rem; height: 2.0rem;") %>
+                <%= ci.item.name %>
               </th>
-              <th class = "p-2">¥<%= Item.find(ci.item_id).total_payment.to_s(:delimited) %></th>
+              <th class = "p-2">¥<%= ci.item.total_payment.to_s(:delimited) %></th>
               <th class = "p-2">
                 <%= form_with model: ci, class: "form-select form-select-lg", local: true do |f| %>
                   <%= f.select :quantity, options_for_select([["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], :selected => ci.quantity), class: "form-select" %>
@@ -34,7 +34,7 @@
                   <%= f.submit '変更', class: "btn btn-success" %>
                 <% end %>
               </th>
-              <th class = "p-2">¥<%= (Item.find(ci.item_id).total_payment*ci.quantity).to_s(:delimited) %></th>
+              <th class = "p-2">¥<%= (ci.item.total_payment*ci.quantity).to_s(:delimited) %></th>
               <th class = "p-2"><%= link_to '削除する', cart_item_path(ci), class: "btn btn-danger", method: :delete %>
             </tr>
           <% end %>
