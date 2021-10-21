@@ -12,6 +12,25 @@ class Public::OrdersController < ApplicationController
   def index
   end
 
+  def create
+    @order = Order.new(order_params)
+    logger.debug(@order.inspect)
+    @order.status = 0
+    @cart_items = CartItem.where(customer_id: 1)
+    @cart_items.each { |ca|
+      @order_detail = OrderDetail.new
+      @order_detail.item_id = ca.item_id
+      @order_detail.order_id = @order.id
+      @order_detail.quantity = ca.quantity
+      @order_detail.production_status = 0
+      @order_detail.price = ca.item_id.total_payment*ca.quantity
+      @order_detail.save
+      ca.destory
+    }
+    @order.save
+    redirect_to thanks_orders_path
+  end
+
   def show
   end
 
