@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
    }
   
-  
+  #奇跡
   
   
    scope module: :public do
