@@ -1,0 +1,40 @@
+<div class="container takasa">
+	
+  <div class="row">
+	<h2 class="mypage"><i class="fas fa-user"></i>マイページ</h2>
+    
+	<p class="under_mypage"><strong>登録情報</strong><%= link_to "編集する",  edit_customers_path, class:"btn btn-primary mypage_edit" %>
+		
+  </div>
+		<div class="row">
+			<div class="col-xs-8">
+				<table class="table table-bordered">
+					<tr>
+						<td>氏名</td>
+						<td><%= @public.last_name %><%= @public.first_name %></td>
+					</tr>
+					<tr>
+						<td>カナ</td>
+						<td><%= @public.last_name_kana %><%= @public.first_name_kana %></td>
+					</tr>
+					<tr>
+						<td>郵便番号</td>
+						<td><%= @public.postal_code %></td>
+					</tr>
+					<tr>
+						<td>住所</td>
+						<td><%= @public.address %></td>
+					</tr>
+					<tr>
+						<td>電話番号</td>
+						<td><%= @public.telephone_number %></td>
+					</tr>
+					<tr>
+						<td>メールアドレス</td>
+						<td><%= @public.email %></td>
+					</tr>
+				</table>
+			</div><br><br>
+		</div>
+	
+	</div>
