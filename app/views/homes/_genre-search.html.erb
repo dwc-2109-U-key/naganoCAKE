@@ -1,6 +1,9 @@
 <div class = 'genre_search'>
   <div class = 'genre_search_title'>ジャンル検索</div>
   <% genres.each do |genre| %>
-    <div class = 'genre_search_record'><%= genre.name %></div>
+    <div class = 'genre_search_record'>
+      <%#= genre.name %>
+      <%= link_to genre.name, search_path(genre) %>
+    </div>
   <% end %>
 </div>

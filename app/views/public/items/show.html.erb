@@ -13,6 +13,12 @@
       <h1><%= @item.name %></h1>
       <p><%= @item.introduction %></p></br>
       <h3>¥ <%= @item.total_payment %><span>(税込)</span></h3>
+      <%= form_with model: @cart_item, url: cart_items_path, local: true do |ci| %>
+        <%= ci.hidden_field :item_id, value: @item.id %>
+        <%= ci.hidden_field :customer_id, value: 1 %>
+        <%= ci.select :quantity, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], include_blank: "個数選択" %>
+        <%= ci.submit 'カートに入れる' %>
+      <% end %>
     </div>
   </div>
 </div>

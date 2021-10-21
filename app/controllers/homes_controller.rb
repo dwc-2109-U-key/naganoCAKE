@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  def home
+  def top
     @genres = Genre.all
     @items = Item.all
     @items = @items.sort_by{|f| f[:create_at]}.reverse!
@@ -12,5 +12,10 @@ class HomesController < ApplicationController
   end
 
   def about
+  end
+
+  def search
+    @genres = Genre.all
+    @items = Item.where(genre_id: params[:id].to_i)
   end
 end

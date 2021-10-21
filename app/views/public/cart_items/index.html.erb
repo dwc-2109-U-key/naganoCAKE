@@ -1,0 +1,53 @@
+<h1>CartItems#index</h1>
+<p>Find me in app/views/cart_items/index.html.erb</p>
+<table class="mx-auto w-auto table-hover">
+  <thead class = "table-secondary table-bordered">
+    <tr>
+      <th>顧客ID</br>(いらない)</th>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |ci| %>
+      <tr class = "table-bordered">
+        <th class = "p-2"><%= ci.customer_id %></th>
+        <th class = "p-2">
+          <%= image_tag(Item.find(ci.item_id).image_id, class: "show-img", style: "width: 2.0rem; height: 2.0rem;") %>
+          <%= Item.find(ci.item_id).name %>
+        </th>
+        <th class = "p-2">¥<%= Item.find(ci.item_id).total_payment.to_s(:delimited) %></th>
+        <th class = "p-2">
+          <%= form_with model: ci, class: "form-select form-select-lg", local: true do |f| %>
+            <%= f.select :quantity, options_for_select([["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], :selected => ci.quantity), class: "form-select" %>
+            &nbsp;
+            <%= f.submit '変更', class: "btn btn-success" %>
+          <% end %>
+        </th>
+        <th class = "p-2">¥<%= (Item.find(ci.item_id).total_payment*ci.quantity).to_s(:delimited) %></th>
+        <th class = "p-2"><%= link_to '削除する', cart_item_path(ci), class: "btn btn-danger", method: :delete %>
+      </tr>
+    <% end %>
+    <tr>
+      <th>&nbsp;</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th></th>
+      <th><%= link_to "買い物を続ける", login_path, class: "btn btn-primary" %></th>
+      <th></th>
+      <th></th>
+      <th class = "border border-dark table-secondary p-2">合計金額</th>
+      <th class = "border border-dark p-2">¥<%= @price %></th>
+    </tr>
+  </tbody>
+  
+</table>
+
