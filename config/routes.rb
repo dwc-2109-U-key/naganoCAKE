@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    get 'items/new'
+    get 'items/index'
+    get 'items/create'
+    get 'items/show'
+    get 'items/edit'
+    get 'items/update'
+  end
   # namespace :public do
   #   get 'orders/new'
   #   get 'orders/index'
