@@ -1,8 +1,12 @@
 <div class = 'item-container'>
   <% items.each do |item| %>
     <%= link_to(item_path(item), class: 'item-box') do %>
-      <%= image_tag(item.image_id, class: "item-img") %>
+      <%#= image_tag(item.image_id, class: "item-img") %>
+      <%#= attachment_image_tag list, :image, :fill, 100, 100, format: 'jpeg' %>
+      <%= attachment_image_tag item, :image, format: 'png', class: "item-img" %>
+      <%#= attachment_image_tag item, :image, size: "150x150", format: 'png', fallback: "noimage.jpg", class: 'rounded' %>
       <p class = 'item-text'><%= item.name %></br>¥<%= item.total_payment.to_s(:delimited) %></p>
     <% end %>
   <% end %>
 </div>
+
