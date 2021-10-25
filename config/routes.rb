@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+#保存のためのコメント
 
    #顧客側　【customer】
   devise_for :customers,skip: [:passwords],controllers: {
