@@ -57,6 +57,15 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # 顧客側　【public】
+  # devise_for :publics,skip: [:passwords,], controllers: {
+  #   sessions:      'public/sessions',
+  #   registrations: 'public/registrations'
+  # }
+
+
   #devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
