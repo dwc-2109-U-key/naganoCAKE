@@ -21,7 +21,6 @@
           <tr class = "table-bordered">
             <th class = "p-2", colspan = "2">
               <%= attachment_image_tag ci.item, :image, class: "show-img", style: "width: 2.0rem; height: 2.0rem;" %>
-              <%#= image_tag(ci.item.image_id, class: "show-img", style: "width: 2.0rem; height: 2.0rem;") %>
               <%= ci.item.name %>
             </th>
             <th class = "p-2">¥<%= ci.item.total_payment.to_s(:delimited) %></th>
@@ -36,11 +35,7 @@
           <td class = "px-3 h4">支払方法
           </td>
           <td colspan = "4">
-            <% if @confirm.payment_method == 1 %>
-              <%= "クレジットカード" %>
-            <% elsif @confirm.payment_method == 2 %>
-              <%= "銀行振込" %>
-            <% end %>
+            <%= @confirm.payment_method_i18n %>
           </td>
         </tr>
         <tr>
@@ -73,7 +68,7 @@
 </br>
 <%= form_with model: @confirm, url: orders_path, local: true do |o| %>
   <%= o.hidden_field :customer_id, value: @confirm.customer_id %>
-  <%= o.hidden_field :status, value: 0 %>
+  <%= o.hidden_field :status, value: :not_paid %>
   <%= o.hidden_field :postal_code, value: @confirm.postal_code %>
   <%= o.hidden_field :address, value: @confirm.address %>
   <%= o.hidden_field :name, value: @confirm.name %>
