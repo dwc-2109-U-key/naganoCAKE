@@ -10,8 +10,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
+<!-- turbo links (railsのリンク) -->
+<!-- ブラウザのリロードはブラウザ自身でリロード-->
+<!-- railsのそれは正規のgetやpostではなく、getやpostに擬態してhtmlを取りに行く -->
+<!-- turbo linksが勝手に読み込んで書き換えているので、ブラウザはその挙動を理解できない -->
+<!-- だから、turbo linksで発火してくださいと記述する必要がある -->
+
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).on('turbolinks:load', function() {
+      // $(document).ready(function(){
         $('.slider').bxSlider({
           auto: true,
           pause: 5000,

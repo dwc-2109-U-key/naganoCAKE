@@ -20,9 +20,9 @@
         <%= ci.select :quantity, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], include_blank: "個数選択" %>
         <%= ci.submit 'カートに入れる' %>
       <% end %>
-      <%= form_with model: @item, url: item_path, method: :delete, local: true do |i| %>
-        <% i.submit "消す", class: "btn btn-danger p-3 m-3" %>
-      <% end %>
+      <%#= form_with model: @item, url: item_path, method: :delete, local: true do |i| %>
+        <%# i.submit "消す", class: "btn btn-danger p-3 m-3" %>
+      <%# end %>
     </div>
   </div>
 </div>

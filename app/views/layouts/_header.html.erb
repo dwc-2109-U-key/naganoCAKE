@@ -1,8 +1,10 @@
 <header class = "bg-pink text-center w-100">
-  <div class = "d-inline h4">ヘッダーだ〜！</div>
-  <%= render 'layouts/header_btn', text: "[公衆ホーム]", path: root_path %>
-  <%= render 'layouts/header_btn', text: "[顧客ホーム]", path: login_path %>
-  <%= render 'layouts/header_btn', text: "[About]", path: about_path %>
-  <%= render 'layouts/header_btn', text: "[カート]", path: cart_items_path %>
-  <%= render 'layouts/header_btn', text: "[新規商品]", path: new_admin_item_path %>
+  <!--<div class = "d-inline h4">ヘッダーだ〜！</div>-->
+  <%= render 'layouts/header_btn', text: "公衆Home", path: root_path %>
+  <%= render 'layouts/header_btn', text: "顧客Home", path: login_path %>
+  <%= render 'layouts/header_btn', text: "About", path: about_path %>
+  <%= render 'layouts/header_btn', text: "カート", path: cart_items_path %>
+  <%= render 'layouts/header_btn', text: "新規商品", path: new_admin_item_path %>
+  <%= render 'layouts/header_btn', text: "配送先一覧", path: addresses_path %>
+  <%= render 'layouts/header_btn', text: "注文一覧", path: orders_path %>
 </header>

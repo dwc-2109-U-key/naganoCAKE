@@ -1,0 +1,9 @@
+<h1>Public::Addresses#edit</h1>
+<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<%= render 'layouts/title', title: "配送先編集" %>
+<%= form_with model: @edit, url: address_path, method: :patch, local: true do |a| %>
+  <%= render 'public/addresses/form', f: a %>
+  <div class = "row">
+    <%= a.submit "変更内容を保存", class: "d-inline mx-auto btn btn-success" %>
+  </div>
+<% end %>

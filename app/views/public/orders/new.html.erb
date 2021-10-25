@@ -1,10 +1,7 @@
 <h1>Public::Orders#new</h1>
 <p>Find me in app/views/public/orders/new.html.erb</p>
 
-<div class = "row h5">
-  <div class = "col-1"></div>
-  <div class = "col-3"><span class = "bg-secondary p-1">　注文情報入力　</span></div>
-</div>
+<%= render 'layouts/title', title: "注文情報入力" %>
 <%= form_with model: @order, url: confirm_orders_path, class: "ml-5", local: true do |o| %>
   <%= o.label :payment_method, "支払方法" %>
   <div class = "ml-4">
@@ -20,22 +17,7 @@
     <%= o.select :postage, @list, { include_blank: true }, class: "ml-4 mb-3" %>
     </br>
     <div class = "mb-2"><%= o.radio_button :status, 3 %>　新しいお届け先</div>
-    <table class = "ml-4">
-      <tbody>
-        <tr>
-          <th><%= o.label :postal_code, "郵便番号(ハイフン無し)" %></th>
-          <th><%= o.text_field :postal_code, class: "form-control", style: "width: 150%" %></th>
-        </tr>
-        <tr>
-          <th><%= o.label :address, "住所" %></th>
-          <th><%= o.text_area :address, class: "form-control", style: "width: 250%" %></th>
-        </tr>
-        <tr>
-          <th><%= o.label :name, "宛名" %></th>
-          <th><%= o.text_field :name, class: "form-control", style: "width: 150%;" %></th>
-        </tr>
-      </tbody>
-    </table>
+    <%= render 'public/addresses/form', f: o %>
   </div>
   <div class = "w-100"><%= o.submit "確認画面へ進む", class: "btn btn-primary mx-auto w-auto d-block" %></div>
 <% end %>

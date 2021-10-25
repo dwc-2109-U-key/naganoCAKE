@@ -23,7 +23,8 @@
             <tr class = "table-bordered">
               <th class = "p-2"><%= ci.customer_id %></th>
               <th class = "p-2">
-                <%= image_tag(ci.item.image_id, class: "show-img", style: "width: 2.0rem; height: 2.0rem;") %>
+                <%= attachment_image_tag ci.item, :image, class: "show-img", style: "width: 2.0rem; height: 2.0rem;" %>
+                <%#= image_tag(ci.item.image_id, class: "show-img", style: "width: 2.0rem; height: 2.0rem;") %>
                 <%= ci.item.name %>
               </th>
               <th class = "p-2">¥<%= ci.item.total_payment.to_s(:delimited) %></th>
