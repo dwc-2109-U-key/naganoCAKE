@@ -24,12 +24,12 @@
         </th>
         <th class = "border-dark">
           <% OrderDetail.where(order_id: o.id).each do |od| %>
-            <%= od.item_id %> <%= od.item.name %></br>
+            <%= od.item.name %></br>
           <% end %>
         </th>
-        <th class = "border-dark"></th>
-        <th class = "border-dark"></th>
-        <th class = "border-dark"></th>
+        <th class = "border-dark"><%= o.price %></th>
+        <th class = "border-dark"><%= o.status_i18n %></th>
+        <th class = "border-dark"><%= link_to "表示する", order_path(o), class: "btn btn-primary m-3 px-2 py-1" %></th>
       </tr>
     <% end %>
   </tbody>

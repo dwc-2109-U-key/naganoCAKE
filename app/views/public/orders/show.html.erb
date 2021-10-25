@@ -1,2 +1,54 @@
 <h1>Public::Orders#show</h1>
 <p>Find me in app/views/public/orders/show.html.erb</p>
+
+<%= render 'layouts/title', title: "注文履歴詳細" %>
+
+<div class = "d-flex">
+  <div class = "mx-4">
+    <p class = "h6 font-weight-bold">注文方法</p>
+    <table class = "table-bordered">
+      <tbody>
+        <tr>
+          <td class = "table-secondary border-dark pl-1 py-2">注文日</td>
+          <td class = "border-dark pl-1 py-2"><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <td class = "table-secondary border-dark pl-1 py-2">配送先</td>
+          <td class = "border-dark pl-1 pr-3 py-2">
+            〒<%= @order.postal_code %></br>
+            <%= @order.address %></br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <td class = "table-secondary border-dark pl-1 py-2">支払方法</td>
+          <td class = "border-dark pl-1 py-2"><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <td class = "table-secondary border-dark pl-1 py-2">ステータス</td>
+          <td class = "border-dark pl-1 py-2"><%= @order.status_i18n %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <p class = "h6 font-weight-bold">請求情報</p>
+    <table class = "d-inline table-bordered">
+      <tbody>
+        <tr>
+          <td class = "table-secondary border-dark py-2 pl-1 pr-5">商品合計</td>
+          <td class = "border-dark py-2 pl-1 pr-5"><%= (@order.price-@order.postage).to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td class = "table-secondary border-dark pl-1 py-2">配送料</td>
+          <td class = "border-dark"><%= @order.postage.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td class = "table-secondary border-dark font-weight-bold pl-1 py-2">ご請求額</td>
+          <td class = "border-dark font-weight-bold"><%= @order.price.to_s(:delimited) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
