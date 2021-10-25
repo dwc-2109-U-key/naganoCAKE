@@ -12,18 +12,18 @@
     <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-  
-  
+
+
   <div class="actions">
     <%= f.submit "Log in" %>
-    
-    
+
+
 <div class="col-xs-5">
-    <h4>登録がお済でない方</h4>
+<h4>登録がお済でない方</h4>
     <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
      <%= link_to "こちら", new_registration_path(resource_name) %>
       <strong>から新規登録を行ってください。</strong>
-      
+
   <% end %>
 <% end %>
 <%= render "customers/shared/links" %>
