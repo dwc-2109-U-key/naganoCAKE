@@ -1,4 +1,4 @@
-# ルーティングにてっきとーな文言を入れたよー
+# 予備用の枝を作るためにコメントを入れるよー
 Rails.application.routes.draw do
 
   root to: 'homes#top'
