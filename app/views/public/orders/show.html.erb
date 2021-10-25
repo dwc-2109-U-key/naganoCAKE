@@ -3,7 +3,7 @@
 
 <%= render 'layouts/title', title: "注文履歴詳細" %>
 
-<div class = "d-flex">
+<div class = "d-flex my-5">
   <div class = "mx-4">
     <p class = "h6 font-weight-bold">注文方法</p>
     <table class = "table-bordered">
@@ -25,7 +25,7 @@
           <td class = "border-dark pl-1 py-2"><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
-          <td class = "table-secondary border-dark pl-1 py-2">ステータス</td>
+          <td class = "table-secondary border-dark pl-1 py-2 pr-5">ステータス</td>
           <td class = "border-dark pl-1 py-2"><%= @order.status_i18n %></td>
         </tr>
       </tbody>
@@ -33,7 +33,7 @@
   </div>
   <div>
     <p class = "h6 font-weight-bold">請求情報</p>
-    <table class = "d-inline table-bordered">
+    <table class = "table-bordered">
       <tbody>
         <tr>
           <td class = "table-secondary border-dark py-2 pl-1 pr-5">商品合計</td>
@@ -41,14 +41,36 @@
         </tr>
         <tr>
           <td class = "table-secondary border-dark pl-1 py-2">配送料</td>
-          <td class = "border-dark"><%= @order.postage.to_s(:delimited) %></td>
+          <td class = "border-dark pl-1 py-2"><%= @order.postage.to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class = "table-secondary border-dark font-weight-bold pl-1 py-2">ご請求額</td>
-          <td class = "border-dark font-weight-bold"><%= @order.price.to_s(:delimited) %></td>
+          <td class = "border-dark font-weight-bold pl-1 py-2"><%= @order.price.to_s(:delimited) %></td>
         </tr>
       </tbody>
     </table>
   </div>
-
+</div>
+<div class = "mx-4">
+  <p class = "h6 font-weight-bold">注文内容</p>
+  <table class = "table-bordered">
+    <thead class = "table-secondary">
+      <tr>
+        <td class = "border-dark pl-1 pr-5 py-2">商品</td>
+        <td class = "border-dark pl-1 pr-5 py-2">単価(税込)</td>
+        <td class = "border-dark pl-1 pr-5 py-2">個数</td>
+        <td class = "border-dark pl-1 pr-5 py-2">小計</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_details.each do |od| %>
+        <tr>
+          <td class = "border-dark pl-1 pr-5 py-2"><%= od.item.name %></td>
+          <td class = "border-dark pl-1 pr-5 py-2"><%= od.item.total_payment %></td>
+          <td class = "border-dark pl-1 pr-5 py-2"><%= od.quantity %></td>
+          <td class = "border-dark pl-1 pr-5 py-2"><%= (od.item.total_payment*od.quantity) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

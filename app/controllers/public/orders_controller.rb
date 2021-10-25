@@ -34,21 +34,24 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   def confirm
     @confirm = Order.new(order_params)
-    if @confirm.status == 1
+    logger.debug("-------------------------ABC---------------------")
+    logger.debug(@confirm.payment_method_i18n)
+    if params[:address_mode].to_i == 1
       logger.debug("ご自身の住所")
       @confirm.postal_code = Customer.find(1).postal_code
       @confirm.address = Customer.find(1).address
       @confirm.name = Customer.find(1).family_name+Customer.find(1).first_name
-    elsif @confirm.status == 2
+    elsif params[:address_mode].to_i == 2
       logger.debug("登録済み住所から選択")
       @confirm.postal_code = Address.find(@confirm.postage).postal_code
       @confirm.address = Address.find(@confirm.postage).address
       @confirm.name = Address.find(@confirm.postage).name
-    elsif @confirm.status == 3
+    elsif params[:address_mode].to_i == 3
       logger.debug("新しいお届け先")
       @address = Address.new
       @address.customer_id = 1
@@ -69,7 +72,10 @@ class Public::OrdersController < ApplicationController
   end
 
   private
-
+  # params[:order][:address_mode]
+  # o.radio_buttonみたいな形で取り出すときは上記の形で引き出す
+  # 一旦paramsで受け取ってからorder_paramsで選択している
+  # 逆にpermitへOrderが持たないカラムの属性を書き込む(この場合は:address_mode)とエラーが起きる
   def order_params
     params.require(:order).permit(:customer_id, :order_id, :status, :postal_code, :address, :name, :postage, :price, :payment_method)
   end

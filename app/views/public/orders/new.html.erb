@@ -5,18 +5,18 @@
 <%= form_with model: @order, url: confirm_orders_path, class: "ml-5", local: true do |o| %>
   <%= o.label :payment_method, "支払方法" %>
   <div class = "ml-4">
-    <div class = "mb-2"><%= o.radio_button :payment_method, 1 %>　クレジットカード</div>
-    <div class = "mb-2"><%= o.radio_button :payment_method, 2 %>　銀行振込</div>
+    <div class = "mb-2"><%= o.radio_button :payment_method, :credit_card %>　<%= Order.payment_methods_i18n[:credit_card] %></div>
+    <div class = "mb-2"><%= o.radio_button :payment_method, :transfer %>　<%= Order.payment_methods_i18n[:transfer] %></div>
   </div>
   </br>
-  <%= o.label :status, "お届け先" %>
+  <%= label :address_mode, "お届け先" %>
   <div class = "ml-4">
-    <div class = "mb-2"><%= o.radio_button :status, 1 %>　ご自身の住所</div>
+    <div class = "mb-2"><%= radio_button_tag :address_mode, 1 %>　ご自身の住所</div>
     <div class = "ml-4 mb-3">〒<%= Customer.find(1).postal_code %> <%=Customer.find(1).address %></br><%= Customer.find(1).family_name %><%= Customer.find(1).first_name %></div>
-    <div class = "mb-2"><%= o.radio_button :status, 2 %>　登録済み住所から選択</div>
+    <div class = "mb-2"><%= radio_button_tag :address_mode, 2 %>　登録済み住所から選択</div>
     <%= o.select :postage, @list, { include_blank: true }, class: "ml-4 mb-3" %>
     </br>
-    <div class = "mb-2"><%= o.radio_button :status, 3 %>　新しいお届け先</div>
+    <div class = "mb-2"><%= radio_button_tag :address_mode, 3 %>　新しいお届け先</div>
     <%= render 'public/addresses/form', f: o %>
   </div>
   <div class = "w-100"><%= o.submit "確認画面へ進む", class: "btn btn-primary mx-auto w-auto d-block" %></div>

@@ -1,0 +1,26 @@
+<h1>Public::Customers#show</h1>
+<p>Find me in app/views/public/customers/show.html.erb</p>
+
+<%= render 'layouts/title', title: "マイページ" %>
+<div class = "row mx-5 my-3">
+  <div class = "col-2 h4 font-weight-bold">登録情報</div>
+  <%= link_to "編集する", edit_customer_path, class: "col-1 btn btn-success" %>
+</div>
+<table class = "table table-bordered w-75 ml-5">
+  <tbody>
+    <%= render 'public/customers/row', title: "氏名", body: (@customer.family_name+"　"+@customer.first_name) %>
+    <%= render 'public/customers/row', title: "カナ", body: (@customer.family_name_kana+"　"+@customer.first_name_kana) %>
+    <%= render 'public/customers/row', title: "郵便番号", body: @customer.postal_code %>
+    <%= render 'public/customers/row', title: "住所", body: @customer.address %>
+    <%= render 'public/customers/row', title: "電話番号", body: @customer.telephone_number %>
+    <%= render 'public/customers/row', title: "メールアドレス", body: "ないんだなこれが" %>
+  </tbody>
+</table>
+<div class = "row mx-5 my-3">
+  <div class = "col-2 h4 font-weight-bold">配送先</div>
+  <%= link_to "一覧を見る", addresses_path, class: "col-1 btn btn-primary" %>
+</div>
+<div class = "row mx-5 my-3">
+  <div class = "col-2 h4 font-weight-bold">注文履歴</div>
+  <%= link_to "一覧を見る", orders_path, class: "col-1 btn btn-primary" %>
+</div>

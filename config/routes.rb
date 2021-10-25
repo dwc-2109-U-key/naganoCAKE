@@ -1,6 +1,6 @@
 # ルーティングにてっきとーな文言を入れたよー
 Rails.application.routes.draw do
-  
+
   root to: 'homes#top'
   get 'homes/about', to: 'homes#about', as: 'about'
   get 'homes/login', to: 'homes#login', as: 'login'
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
-  
+
   namespace :admin do
     # root :to => “homes#top”
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
-  
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
