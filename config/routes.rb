@@ -1,3 +1,4 @@
+# ルーティングにてっきとーな文言を入れたよー
 Rails.application.routes.draw do
   
   root to: 'homes#top'
