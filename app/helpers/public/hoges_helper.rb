@@ -1,0 +1,2 @@
+module Public::HogesHelper
+end

@@ -1,0 +1,20 @@
+<h1>Admin::Items#new</h1>
+<p>Find me in app/views/admin/items/new.html.erb</p>
+
+<%= render 'layouts/title', title: "商品新規登録" %>
+<%= form_with model: @item, url: admin_items_path, class: "row w-75 mx-auto", local: true do |i| %>
+  <%= i.label :image_id, "商品画像", class: "col-3 ml-5 my-1" %>
+  <%= i.attachment_field :image, class: "col-8 my-1 py-2" %>
+  <%= i.label :name, "商品名", class: "col-3 ml-5 my-1" %>
+  <%= i.text_field :name, placeholder: "商品名", class: "col-8 my-1 py-2" %>
+  <%= i.label :introduction, "商品説明", class: "col-3 ml-5 my-1" %>
+  <%= i.text_area :introduction, placeholder: "ここに説明文を記述します", class: "col-8 my-1 py-2" %>
+  <%= i.label :genre_id, "ジャンル名", class: "col-3 ml-5 my-1" %>
+  <%= i.select :genre_id, @list, {prompt: "--選択してください--"}, {class: "col-8 my-1 py-2"} %>
+  <%= i.label :total_payment, "税込価格", class: "col-3 ml-5 my-1" %>
+  <%= i.text_field :total_payment, placeholder: "1000", class: "col-8 my-1 py-2" %>
+  <%= i.label :status, "販売ステータス", class: "col-3 ml-5 my-1" %>
+  <div class = "col-4 my-1 py-2"><%= i.radio_button :status, true %>　販売中</div>
+  <div class = "col-4 my-1 py-2"><%= i.radio_button :status, false %>　販売停止中</div>
+  <%= i.submit "新規登録", class: "btn btn-success col-3 py-2 d-inline mx-auto" %>
+<% end %>

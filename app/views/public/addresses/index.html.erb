@@ -1,0 +1,33 @@
+<h1>Public::Addresses#index</h1>
+<p>Find me in app/views/public/addresses/index.html.erb</p>
+
+<%= render 'layouts/title', title: "配送先登録/一覧" %>
+<%= form_with model: @address, url: addresses_path, method: :post, local: true do |a| %>
+  <%= render 'public/addresses/form', f: a %>
+  <div class = "row">
+    <%= a.submit "新規登録", class: "d-inline mx-auto btn btn-success" %>
+  </div>
+<% end %>
+<table class = "ml-4 table-bordered">
+  <thead>
+    <tr class = "table-secondary">
+      <th class = "border-dark">郵便番号</th>
+      <th class = "border-dark">住所</th>
+      <th class = "border-dark">宛名</th>
+      <th class = "border-dark"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @addresses.each do |a| %>
+      <tr>
+        <td><%= a.postal_code %></td>
+        <td><%= a.address %></td>
+        <td><%= a.name %></td>
+        <td>
+          <%= link_to "編集する", edit_address_path(a.id), class: "btn btn-success ml-5 mr-1 my-1 px-2 py-1" %>
+          <%= link_to "削除する", address_path(a.id), method: :delete , class: "btn btn-danger ml-1 mr-5 my-1 px-2 py-1" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

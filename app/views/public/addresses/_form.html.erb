@@ -1,0 +1,16 @@
+<table class = "ml-4">
+  <tbody>
+    <tr>
+      <th><%= f.label :postal_code, "郵便番号(ハイフン無し)" %></th>
+      <th><%= f.text_field :postal_code, class: "form-control", style: "width: 150%" %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :address, "住所" %></th>
+      <th><%= f.text_area :address, class: "form-control", style: "width: 250%" %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :name, "宛名" %></th>
+      <th><%= f.text_field :name, class: "form-control", style: "width: 150%;" %></th>
+    </tr>
+  </tbody>
+</table>
